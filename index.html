@@ -3,31 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hotelli Järvenranta – Rauhallinen majoitus järven rannalla</title>
-  <meta name="description" content="Hotelli Järvenranta tarjoaa tunnelmallista majoitusta, rantasaunan ja paikallista ruokaa aivan järven rannalla. Varaa huoneesi helposti verkossa.">
+  <title>Aurelia Hotel</title>
+  <meta name="description" content="Aurelia – moderni boutique-hotelli kaupungin sydämessä. Designsviitit, kattoterassi, spa ja ravintola.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="site-header" id="top">
-    <div class="container nav-wrap">
-      <a href="#top" class="logo" aria-label="Hotelli Järvenranta – etusivu">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 22c4-3 8-3 12 0s8 3 12 0" /><path d="M4 27c4-3 8-3 12 0s8 3 12 0" /><path d="M9 17 16 6l7 11" /></svg>
-        <span>Järvenranta</span>
+    <div class="nav-pill">
+      <a href="#top" class="logo" aria-label="Aurelia – etusivu">
+        <span class="logo-dot"></span>aurelia
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Avaa valikko">
-        <span></span><span></span><span></span>
+        <span></span><span></span>
       </button>
       <nav id="main-nav" class="main-nav">
-        <a href="#huoneet">Huoneet</a>
+        <a href="#sviitit">Sviitit</a>
         <a href="#palvelut">Palvelut</a>
         <a href="#galleria">Galleria</a>
-        <a href="#arviot">Arviot</a>
         <a href="#yhteystiedot">Yhteystiedot</a>
-        <a href="#varaa" class="btn btn-small">Varaa huone</a>
+        <a href="#varaa" class="btn btn-small">Varaa</a>
       </nav>
     </div>
   </header>
@@ -39,285 +37,225 @@
         <canvas id="hero-canvas"></canvas>
       </div>
       <div class="container hero-content">
-        <p class="eyebrow">Järvimaiseman ääreltä · Avoinna ympäri vuoden</p>
-        <h1>Hetki hiljaisuutta,<br>järven rannalla.</h1>
-        <p class="lead">Tunnelmallinen hotelli, jossa yhdistyvät suomalainen luonto, rantasauna ja huolella valmistettu paikallinen ruoka.</p>
-        <div class="hero-actions">
-          <a href="#varaa" class="btn">Tarkista saatavuus</a>
-          <a href="#huoneet" class="btn btn-ghost">Tutustu huoneisiin</a>
+        <p class="chip"><span class="pulse"></span> Vapaita sviittejä tälle viikonlopulle</p>
+        <h1>Stay<br>beyond<br><span class="grad-text">ordinary.</span></h1>
+        <div class="hero-bottom">
+          <p class="lead">Moderni boutique-hotelli kaupungin sydämessä. 24 designsviittiä, kattoterassi ja palvelu, joka tuntee sinut nimeltä.</p>
+          <div class="hero-actions">
+            <a href="#varaa" class="btn">Varaa sviitti <span aria-hidden="true">→</span></a>
+            <a href="#sviitit" class="btn btn-glass">Katso sviitit</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- QUICK FACTS -->
-    <section class="facts container" aria-label="Hotellin tietoja">
-      <div><strong>32</strong><span>huonetta ja sviittiä</span></div>
-      <div><strong>2</strong><span>rantasaunaa</span></div>
-      <div><strong>4,8 / 5</strong><span>asiakasarvio</span></div>
-      <div><strong>150 m</strong><span>omaa hiekkarantaa</span></div>
+    <!-- STATS -->
+    <section class="container stats" aria-label="Hotellin tietoja">
+      <div><strong>24</strong><span>designsviittiä</span></div>
+      <div><strong>4.9</strong><span>vieraiden arvio</span></div>
+      <div><strong>24/7</strong><span>concierge</span></div>
+      <div><strong>0 min</strong><span>jonotusta – mobiilikirjautuminen</span></div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="section about container">
-      <div class="about-text">
-        <p class="eyebrow">Tervetuloa</p>
-        <h2>Paikka, jossa aika hidastuu</h2>
-        <p>Hotelli Järvenranta sijaitsee männikön suojassa, kirkasvetisen järven rannalla. Vuonna 1962 rakennettu huvila on kunnostettu huolella, ja se tarjoaa nykyaikaiset mukavuudet säilyttäen vanhan ajan tunnelman.</p>
-        <p>Aamulla herätään lintujen lauluun, päivällä melotaan saaristoon ja illalla nautitaan saunan löylyistä ja uinnista. Talvella pihalla odottavat avanto, lumikenkäpolut ja revontulet.</p>
-        <ul class="checklist">
-          <li>Maksuton pysäköinti ja sähköauton latauspisteet</li>
-          <li>Langaton nettiyhteys kaikissa tiloissa</li>
-          <li>Lemmikit tervetulleita valituissa huoneissa</li>
-        </ul>
-      </div>
-      <div class="about-visual" aria-hidden="true">
-        <div class="tile tile-a"></div>
-        <div class="tile tile-b"></div>
-        <div class="badge-card">
-          <span class="badge-num">60+</span>
-          <span>vuotta vieraanvaraisuutta</span>
+    <!-- SUITES -->
+    <section class="section container" id="sviitit">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">01 — Sviitit</p>
+          <h2>Tilaa hengittää.</h2>
         </div>
+        <p>Selkeät linjat, lattiasta kattoon ulottuvat ikkunat ja älykäs huoneohjaus. Jokainen sviitti on suunniteltu levolle.</p>
       </div>
-    </section>
-
-    <!-- ROOMS -->
-    <section class="section rooms-section" id="huoneet">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Majoitus</p>
-          <h2>Huoneet ja sviitit</h2>
-          <p>Jokaisessa huoneessa on laadukkaat sängyt, pellavaliinavaatteet ja ikkunasta näkymä metsään tai järvelle.</p>
-        </div>
-        <div class="rooms">
-          <article class="room-card">
-            <div class="room-img room-img-1" aria-hidden="true"></div>
-            <div class="room-body">
-              <h3>Metsähuone</h3>
-              <p>Viihtyisä kahden hengen huone metsänäkymällä. Täydellinen lyhyeen irtiottoon.</p>
-              <ul class="room-meta">
-                <li>2 henkeä</li><li>22 m²</li><li>Parivuode</li>
-              </ul>
-              <div class="room-foot">
-                <p class="price"><span>alk.</span> 119 € <small>/ yö</small></p>
-                <a href="#varaa" class="btn btn-small" data-room="metsa">Varaa</a>
-              </div>
+      <div class="suites">
+        <article class="suite">
+          <div class="suite-img suite-img-1" aria-hidden="true"></div>
+          <div class="suite-body">
+            <div class="suite-top">
+              <h3>Studio Suite</h3>
+              <span class="tag">45 m²</span>
             </div>
-          </article>
-          <article class="room-card featured">
-            <span class="ribbon">Suosituin</span>
-            <div class="room-img room-img-2" aria-hidden="true"></div>
-            <div class="room-body">
-              <h3>Järvihuone</h3>
-              <p>Valoisa huone omalla parvekkeella ja esteettömällä näkymällä järvelle.</p>
-              <ul class="room-meta">
-                <li>2–3 henkeä</li><li>28 m²</li><li>Parveke</li>
-              </ul>
-              <div class="room-foot">
-                <p class="price"><span>alk.</span> 159 € <small>/ yö</small></p>
-                <a href="#varaa" class="btn btn-small" data-room="jarvi">Varaa</a>
-              </div>
+            <p>King size -vuode, sadesuihku ja työpiste kaupunkinäkymällä.</p>
+            <div class="suite-foot">
+              <p class="price"><strong>490 €</strong> / yö</p>
+              <a href="#varaa" class="arrow-btn" data-room="studio" aria-label="Varaa Studio Suite">→</a>
             </div>
-          </article>
-          <article class="room-card">
-            <div class="room-img room-img-3" aria-hidden="true"></div>
-            <div class="room-body">
-              <h3>Rantasviitti</h3>
-              <p>Tilava sviitti omalla saunalla, takalla ja terassilla suoraan rantaan.</p>
-              <ul class="room-meta">
-                <li>2–4 henkeä</li><li>54 m²</li><li>Oma sauna</li>
-              </ul>
-              <div class="room-foot">
-                <p class="price"><span>alk.</span> 289 € <small>/ yö</small></p>
-                <a href="#varaa" class="btn btn-small" data-room="sviitti">Varaa</a>
-              </div>
+          </div>
+        </article>
+        <article class="suite">
+          <div class="suite-img suite-img-2" aria-hidden="true"></div>
+          <div class="suite-body">
+            <div class="suite-top">
+              <h3>Skyline Suite</h3>
+              <span class="tag tag-accent">Suosituin</span>
             </div>
-          </article>
-        </div>
+            <p>Kulmasviitti panoraamaikkunoin, oma olohuone ja kylpyamme näkymällä.</p>
+            <div class="suite-foot">
+              <p class="price"><strong>890 €</strong> / yö</p>
+              <a href="#varaa" class="arrow-btn" data-room="skyline" aria-label="Varaa Skyline Suite">→</a>
+            </div>
+          </div>
+        </article>
+        <article class="suite">
+          <div class="suite-img suite-img-3" aria-hidden="true"></div>
+          <div class="suite-body">
+            <div class="suite-top">
+              <h3>Penthouse</h3>
+              <span class="tag">180 m²</span>
+            </div>
+            <p>Oma kattoterassi, sauna, poreallas ja yksityinen sisäänkäynti.</p>
+            <div class="suite-foot">
+              <p class="price"><strong>2 900 €</strong> / yö</p>
+              <a href="#varaa" class="arrow-btn" data-room="penthouse" aria-label="Varaa Penthouse">→</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- SERVICES -->
+    <!-- SERVICES (bento) -->
     <section class="section container" id="palvelut">
       <div class="section-head">
-        <p class="eyebrow">Palvelut</p>
-        <h2>Kaikki mitä tarvitset lomaan</h2>
+        <div>
+          <p class="eyebrow">02 — Palvelut</p>
+          <h2>Kaikki yhden<br>katon alla.</h2>
+        </div>
+        <p>Ravintolasta spa-osastoon – vierailusi hoituu yhdellä sovelluksella huoneavaimesta pöytävaraukseen.</p>
       </div>
-      <div class="services">
-        <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 20h18M5 20V10l7-5 7 5v10M9 20v-5h6v5"/></svg></div>
-          <h3>Rantasauna</h3>
-          <p>Perinteinen puulämmitteinen savusauna ja sähkösauna. Vuoroja joka ilta.</p>
+      <div class="bento">
+        <div class="bento-card b-big">
+          <span class="b-icon"><svg viewBox="0 0 24 24"><path d="M3 18h18M5 18a7 7 0 0 1 14 0M12 8V6M10 6h4"/></svg></span>
+          <div>
+            <h3>Ravintola Nord</h3>
+            <p>Moderni pohjoismainen keittiö, avokeittiö ja kokin pöytä kahdeksalle.</p>
+          </div>
         </div>
-        <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24"><path d="M6 3v8a3 3 0 0 0 6 0V3M9 3v18M17 3c-2 2-2 6 0 8v10"/></svg></div>
-          <h3>Ravintola Kaisla</h3>
-          <p>Lähiruokaa sesongin mukaan: järvikalaa, riistaa ja metsän antimia.</p>
+        <div class="bento-card b-accent">
+          <span class="b-icon"><svg viewBox="0 0 24 24"><path d="M12 3c3 4 5 6.5 5 9.5a5 5 0 0 1-10 0C7 9.5 9 7 12 3z"/></svg></span>
+          <div>
+            <h3>Spa &amp; sauna</h3>
+            <p>Infinity-allas, kolme saunaa ja hoitohuoneet.</p>
+          </div>
         </div>
-        <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24"><path d="M2 18c3 2 6 2 10 0s7-2 10 0M5 14l7-10 7 10z"/></svg></div>
-          <h3>Vesiaktiviteetit</h3>
-          <p>Kanootit, SUP-laudat ja soutuveneet vapaasti hotellin vieraiden käytössä.</p>
+        <div class="bento-card">
+          <span class="b-icon"><svg viewBox="0 0 24 24"><path d="M4 20V10l8-6 8 6v10M9 20v-6h6v6"/></svg></span>
+          <div>
+            <h3>Rooftop-baari</h3>
+            <p>Cocktaileja 12. kerroksessa.</p>
+          </div>
         </div>
-        <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19"/></svg></div>
-          <h3>Talviaktiviteetit</h3>
-          <p>Avantouinti, lumikenkäily, hiihtoladut ja opastetut revontuliretket.</p>
+        <div class="bento-card">
+          <span class="b-icon"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span>
+          <div>
+            <h3>Digiavain</h3>
+            <p>Kirjaudu sisään puhelimella.</p>
+          </div>
         </div>
-        <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div>
-          <h3>Hyvinvointi</h3>
-          <p>Hieronnat, kasvohoidot ja aamujooga laiturilla kesäisin.</p>
-        </div>
-        <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M8 15h3"/></svg></div>
-          <h3>Kokoustilat</h3>
-          <p>Kolme valoisaa kokoustilaa 8–60 hengelle, tekniikka ja tarjoilut sisältyvät.</p>
+        <div class="bento-card">
+          <span class="b-icon"><svg viewBox="0 0 24 24"><path d="M5 17h14l-1.5-5h-11zM7 17v2M17 17v2M6.5 12 8 7h8l1.5 5"/></svg></span>
+          <div>
+            <h3>Yksityiskuljetukset</h3>
+            <p>Premium-sähköauto lentokentältä ovelle.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- GALLERY -->
-    <section class="section gallery-section" id="galleria">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Galleria</p>
-          <h2>Tunnelmia Järvenrannasta</h2>
+    <section class="section container" id="galleria">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">03 — Galleria</p>
+          <h2>Katso ympärillesi.</h2>
         </div>
-        <div class="gallery">
-          <figure class="g g1"><figcaption>Laituri aamulla</figcaption></figure>
-          <figure class="g g2"><figcaption>Rantasauna</figcaption></figure>
-          <figure class="g g3"><figcaption>Ravintola Kaisla</figcaption></figure>
-          <figure class="g g4"><figcaption>Talvinen järvi</figcaption></figure>
-          <figure class="g g5"><figcaption>Rantasviitti</figcaption></figure>
-        </div>
+      </div>
+      <div class="gallery">
+        <figure class="g g1"><figcaption>Aula</figcaption></figure>
+        <figure class="g g2"><figcaption>Ravintola Nord</figcaption></figure>
+        <figure class="g g3"><figcaption>Rooftop</figcaption></figure>
+        <figure class="g g4"><figcaption>Spa</figcaption></figure>
       </div>
     </section>
 
     <!-- BOOKING -->
-    <section class="section container booking" id="varaa">
-      <div class="booking-info">
-        <p class="eyebrow">Varaus</p>
-        <h2>Varaa oma lomasi</h2>
-        <p>Täytä lomake, niin vahvistamme varauksesi sähköpostitse vuorokauden sisällä. Hintaan sisältyy runsas aamiainen ja iltasauna.</p>
-        <ul class="checklist">
-          <li>Maksuton peruutus 48 h ennen saapumista</li>
-          <li>Paras hinta suoraan meiltä varaamalla</li>
-          <li>Sisäänkirjautuminen klo 15, uloskirjautuminen klo 12</li>
-        </ul>
-      </div>
-      <form class="booking-form" id="booking-form" novalidate>
-        <div class="field-row">
-          <label>Saapuminen
-            <input type="date" name="checkin" id="checkin" required>
+    <section class="section container" id="varaa">
+      <div class="booking">
+        <div class="booking-info">
+          <p class="eyebrow">04 — Varaus</p>
+          <h2>Varaa suoraan.<br>Saat enemmän.</h2>
+          <ul class="perks">
+            <li><span>✓</span> Paras hinta aina suoraan meiltä</li>
+            <li><span>✓</span> Myöhäinen uloskirjautuminen klo 14 asti</li>
+            <li><span>✓</span> Maksuton peruutus 48 h ennen saapumista</li>
+          </ul>
+        </div>
+        <form class="booking-form" id="booking-form" novalidate>
+          <div class="field-row">
+            <label>Saapuminen
+              <input type="date" name="checkin" id="checkin" required>
+            </label>
+            <label>Lähtö
+              <input type="date" name="checkout" id="checkout" required>
+            </label>
+          </div>
+          <div class="field-row">
+            <label>Sviitti
+              <select name="room" id="room" required>
+                <option value="studio" data-price="490">Studio Suite – 490 €/yö</option>
+                <option value="skyline" data-price="890" selected>Skyline Suite – 890 €/yö</option>
+                <option value="penthouse" data-price="2900">Penthouse – 2 900 €/yö</option>
+              </select>
+            </label>
+            <label>Vieraat
+              <select name="guests" id="guests">
+                <option>1</option><option selected>2</option><option>3</option><option>4</option>
+              </select>
+            </label>
+          </div>
+          <label>Nimi
+            <input type="text" name="name" id="name" autocomplete="name" required placeholder="Etunimi Sukunimi">
           </label>
-          <label>Lähtö
-            <input type="date" name="checkout" id="checkout" required>
+          <label>Sähköposti
+            <input type="email" name="email" id="email" autocomplete="email" required placeholder="nimi@esimerkki.fi">
           </label>
-        </div>
-        <div class="field-row">
-          <label>Huonetyyppi
-            <select name="room" id="room" required>
-              <option value="metsa" data-price="119">Metsähuone – 119 €/yö</option>
-              <option value="jarvi" data-price="159" selected>Järvihuone – 159 €/yö</option>
-              <option value="sviitti" data-price="289">Rantasviitti – 289 €/yö</option>
-            </select>
+          <label>Toiveet <span class="optional">(valinnainen)</span>
+            <textarea name="notes" rows="2" placeholder="Esim. saapumisaika tai kuljetus"></textarea>
           </label>
-          <label>Henkilöt
-            <select name="guests" id="guests">
-              <option>1</option><option selected>2</option><option>3</option><option>4</option>
-            </select>
-          </label>
-        </div>
-        <label>Nimi
-          <input type="text" name="name" id="name" autocomplete="name" required placeholder="Etunimi Sukunimi">
-        </label>
-        <label>Sähköposti
-          <input type="email" name="email" id="email" autocomplete="email" required placeholder="nimi@esimerkki.fi">
-        </label>
-        <label>Lisätiedot <span class="optional">(valinnainen)</span>
-          <textarea name="notes" rows="3" placeholder="Esim. allergiat, saapumisaika tai toiveet"></textarea>
-        </label>
-        <div class="summary" id="summary" aria-live="polite">Valitse päivämäärät nähdäksesi hinnan.</div>
-        <p class="form-error" id="form-error" role="alert"></p>
-        <button type="submit" class="btn btn-block">Lähetä varauspyyntö</button>
-        <div class="form-success" id="form-success" hidden>
-          <h3>Kiitos varauksestasi!</h3>
-          <p>Olemme vastaanottaneet varauspyyntösi ja lähetämme vahvistuksen sähköpostiisi pian.</p>
-        </div>
-      </form>
-    </section>
-
-    <!-- REVIEWS -->
-    <section class="section reviews-section" id="arviot">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Asiakkaiden kokemuksia</p>
-          <h2>Mitä vieraamme sanovat</h2>
-        </div>
-        <div class="reviews">
-          <blockquote>
-            <div class="stars" aria-label="5 tähteä">★★★★★</div>
-            <p>”Upea paikka rentoutua. Savusauna ja uinti järvessä auringonlaskun aikaan olivat loman kohokohta.”</p>
-            <cite>— Liisa ja Markus, Tampere</cite>
-          </blockquote>
-          <blockquote>
-            <div class="stars" aria-label="5 tähteä">★★★★★</div>
-            <p>”Ravintolan ruoka oli aivan huippua, ja henkilökunta erittäin ystävällistä. Tulemme varmasti uudelleen.”</p>
-            <cite>— Jukka, Helsinki</cite>
-          </blockquote>
-          <blockquote>
-            <div class="stars" aria-label="4 tähteä">★★★★☆</div>
-            <p>”Talviloma Järvenrannassa oli satumainen. Näimme jopa revontulet avannosta käsin!”</p>
-            <cite>— Sofia, Turku</cite>
-          </blockquote>
-        </div>
+          <div class="summary" id="summary" aria-live="polite">Valitse päivämäärät nähdäksesi hinnan.</div>
+          <p class="form-error" id="form-error" role="alert"></p>
+          <button type="submit" class="btn btn-block">Lähetä varauspyyntö <span aria-hidden="true">→</span></button>
+          <div class="form-success" id="form-success" hidden>
+            <span class="success-icon">✓</span>
+            <h3>Varauspyyntö lähetetty</h3>
+            <p>Saat vahvistuksen sähköpostiisi pian.</p>
+          </div>
+        </form>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section class="section container contact" id="yhteystiedot">
-      <div>
-        <p class="eyebrow">Yhteystiedot</p>
-        <h2>Tule käymään</h2>
-        <dl class="contact-list">
-          <dt>Osoite</dt><dd>Rantatie 12, 00000 Järvikylä</dd>
-          <dt>Puhelin</dt><dd><a href="tel:+358401234567">+358 40 123 4567</a></dd>
-          <dt>Sähköposti</dt><dd><a href="mailto:info@hotellijarvenranta.fi">info@hotellijarvenranta.fi</a></dd>
-          <dt>Vastaanotto</dt><dd>Avoinna joka päivä klo 7–23</dd>
-        </dl>
-      </div>
-      <div class="map" aria-label="Sijaintikartta">
-        <svg viewBox="0 0 400 280" aria-hidden="true">
-          <rect width="400" height="280" fill="var(--map-land)"/>
-          <path d="M210 0 C180 60 260 90 230 150 C200 210 280 230 260 280 H400 V0Z" fill="var(--map-water)"/>
-          <path d="M0 200 C80 180 140 210 200 160 S260 80 400 60" stroke="var(--map-road)" stroke-width="6" fill="none"/>
-          <g transform="translate(205 140)">
-            <circle r="18" fill="var(--accent)" opacity=".25"/>
-            <path d="M0 -22c-8 0-13 6-13 13 0 9 13 21 13 21s13-12 13-21c0-7-5-13-13-13z" fill="var(--accent)"/>
-            <circle cy="-9" r="4.5" fill="#fff"/>
-          </g>
-        </svg>
-        <p>Noin 2 tunnin ajomatka Helsingistä. Kysy myös noutoa lähimmältä rautatieasemalta.</p>
+    <section class="section container" id="yhteystiedot">
+      <div class="contact">
+        <h2>Nähdään<br><span class="grad-text">pian.</span></h2>
+        <div class="contact-grid">
+          <div><span class="label">Osoite</span><p>Kultakatu 1<br>00100 Helsinki</p></div>
+          <div><span class="label">Puhelin</span><p><a href="tel:+358401234567">+358 40 123 4567</a></p></div>
+          <div><span class="label">Sähköposti</span><p><a href="mailto:hello@aureliahotel.fi">hello@aureliahotel.fi</a></p></div>
+          <div><span class="label">Vastaanotto</span><p>Avoinna 24/7</p></div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-wrap">
-      <div>
-        <a href="#top" class="logo">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 22c4-3 8-3 12 0s8 3 12 0" /><path d="M4 27c4-3 8-3 12 0s8 3 12 0" /><path d="M9 17 16 6l7 11" /></svg>
-          <span>Järvenranta</span>
-        </a>
-        <p>Rauhallista majoitusta järven rannalla vuodesta 1962.</p>
-      </div>
+      <a href="#top" class="logo"><span class="logo-dot"></span>aurelia</a>
       <nav class="footer-nav" aria-label="Alatunnisteen valikko">
-        <a href="#huoneet">Huoneet</a>
+        <a href="#sviitit">Sviitit</a>
         <a href="#palvelut">Palvelut</a>
         <a href="#varaa">Varaa</a>
         <a href="#yhteystiedot">Yhteystiedot</a>
       </nav>
-      <p class="copyright">© <span id="year"></span> Hotelli Järvenranta</p>
+      <p class="copyright">© <span id="year"></span> Aurelia Hotel</p>
     </div>
   </footer>
 

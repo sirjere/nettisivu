@@ -20,7 +20,7 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 
   // Reveal on scroll
-  const revealEls = document.querySelectorAll('.section-head, .room-card, .service, .g, .reviews blockquote, .about-text, .about-visual, .booking-form, .facts');
+  const revealEls = document.querySelectorAll('.section-head, .stats > div, .suite, .bento-card, .g, .booking, .contact');
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
