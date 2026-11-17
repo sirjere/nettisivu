@@ -94,36 +94,11 @@ p { margin: 0 0 1em; }
 .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; color: #fff; overflow: hidden; }
 .hero-bg { position: absolute; inset: 0; }
 .hero-bg svg { width: 100%; height: 100%; }
-.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12,40,66,.62), rgba(12,40,66,.12) 65%, transparent), linear-gradient(180deg, rgba(12,40,66,.35), transparent 22%); }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,32,58,.55), rgba(8,32,58,.18) 45%, transparent 68%), linear-gradient(180deg, rgba(8,32,58,.35), transparent 20%); }
 
-/* Live-tausta: aurinko, linnut ja välkehtivä järvi */
-.sun-glow { transform-box: fill-box; transform-origin: center; animation: glow 6s ease-in-out infinite; }
-.sun-rays { animation: spin 60s linear infinite; }
-.sun-path { animation: glow 5s ease-in-out infinite; transform-box: fill-box; transform-origin: center top; }
-.shimmer rect { transform-box: fill-box; transform-origin: center; animation: shimmer 3.2s ease-in-out infinite; }
-.shimmer rect:nth-child(2) { animation-delay: -.8s; }
-.shimmer rect:nth-child(3) { animation-delay: -1.6s; }
-.shimmer rect:nth-child(4) { animation-delay: -2.2s; }
-.shimmer rect:nth-child(5) { animation-delay: -2.8s; }
-.waves path { animation: drift 14s linear infinite; }
-.waves path:nth-child(2) { animation-duration: 20s; animation-direction: reverse; }
-.bird { animation: fly 38s linear infinite; }
-.b1 { animation-delay: -4s; }
-.b2 { animation-delay: -10s; animation-duration: 44s; }
-.b3 { animation-delay: -14s; animation-duration: 41s; }
-@keyframes glow { 50% { opacity: .7; transform: scale(1.06); } }
-@keyframes spin { to { transform: rotate(360deg); } }
-@keyframes shimmer { 0%, 100% { opacity: .15; transform: scaleX(.6); } 50% { opacity: .75; transform: scaleX(1.1); } }
-@keyframes drift { to { transform: translateX(-160px); } }
-@keyframes fly {
-  0%   { transform: translate(-80px, 260px); }
-  25%  { transform: translate(340px, 230px); }
-  50%  { transform: translate(760px, 250px); }
-  75%  { transform: translate(1180px, 215px); }
-  100% { transform: translate(1540px, 235px); }
-}
-.b2 { translate: 30px 22px; }
-.b3 { translate: 58px -6px; }
+/* Live-tausta: WebGL-maisema (hero-scene.js). Liukuväri näkyy, jos WebGL ei ole käytössä. */
+.hero-bg { background: linear-gradient(180deg, #2a68b8 0%, #8fc0e8 52%, #c6def0 61%, #2f4a3a 61.5%, #2f4a3a 63%, #5d8fb3 63.5%, #183b55 100%); }
+.hero-bg canvas { display: block; width: 100%; height: 100%; }
 .hero-content { position: relative; z-index: 1; padding: 120px 0 80px; max-width: 1160px; }
 .hero .eyebrow { color: #f6c9a5; }
 .hero h1 { max-width: 14ch; }
@@ -265,7 +240,6 @@ textarea { resize: vertical; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .hero-bg * { animation: none !important; }
 }
 
 /* Responsive */
@@ -305,6 +279,4 @@ textarea { resize: vertical; }
   .facts div { padding: 20px 12px; }
   .facts strong { font-size: 1.6rem; }
   .about-visual { height: 320px; }
-  .hero-bg .sun { transform: translate(830px, 150px) scale(.65); }
-  .hero-bg .reflection { transform: translateX(-230px); }
 }
