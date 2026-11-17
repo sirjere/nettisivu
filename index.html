@@ -68,7 +68,9 @@
       </div>
       <div class="suites">
         <article class="suite">
-          <div class="suite-img suite-img-1" aria-hidden="true"></div>
+          <div class="suite-img" data-suite="studio">
+            <button type="button" class="view-btn" data-open-suite="studio"><span class="live-dot"></span>Katso kuvat <span class="count">2</span></button>
+          </div>
           <div class="suite-body">
             <div class="suite-top">
               <h3>Studio Suite</h3>
@@ -82,7 +84,9 @@
           </div>
         </article>
         <article class="suite">
-          <div class="suite-img suite-img-2" aria-hidden="true"></div>
+          <div class="suite-img" data-suite="skyline">
+            <button type="button" class="view-btn" data-open-suite="skyline"><span class="live-dot"></span>Katso kuvat <span class="count">2</span></button>
+          </div>
           <div class="suite-body">
             <div class="suite-top">
               <h3>Skyline Suite</h3>
@@ -96,7 +100,9 @@
           </div>
         </article>
         <article class="suite">
-          <div class="suite-img suite-img-3" aria-hidden="true"></div>
+          <div class="suite-img" data-suite="penthouse">
+            <button type="button" class="view-btn" data-open-suite="penthouse"><span class="live-dot"></span>Katso kuvat <span class="count">3</span></button>
+          </div>
           <div class="suite-body">
             <div class="suite-top">
               <h3>Penthouse</h3>
@@ -259,6 +265,27 @@
     </div>
   </footer>
 
+  <dialog id="viewer" class="viewer" aria-labelledby="viewer-title">
+    <div class="viewer-head">
+      <div>
+        <p class="eyebrow">Sviitti</p>
+        <h3 class="viewer-title" id="viewer-title"></h3>
+      </div>
+      <div class="viewer-tabs" role="tablist" aria-label="Näkymä"></div>
+      <button type="button" class="viewer-close" aria-label="Sulje">✕</button>
+    </div>
+    <div class="viewer-stage"></div>
+    <div class="viewer-foot">
+      <div class="viewer-nav">
+        <button type="button" class="viewer-prev" aria-label="Edellinen näkymä">←</button>
+        <span class="viewer-count"></span>
+        <button type="button" class="viewer-next" aria-label="Seuraava näkymä">→</button>
+      </div>
+      <a href="#varaa" class="btn btn-small viewer-book">Varaa tämä sviitti</a>
+    </div>
+  </dialog>
+
+  <script src="scenes.js"></script>
   <script src="hero-scene.js"></script>
   <script src="script.js"></script>
 </body>
