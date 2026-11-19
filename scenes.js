@@ -53,6 +53,45 @@
         <stop offset=".5" stop-color="#2a2540"/>
         <stop offset="1" stop-color="#121120"/>
       </linearGradient>
+      <linearGradient id="${u}sofa" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#e9dfd1"/>
+        <stop offset=".55" stop-color="#cdbfae"/>
+        <stop offset="1" stop-color="#8f8172"/>
+      </linearGradient>
+      <linearGradient id="${u}sofaSeat" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#d8cbbb"/>
+        <stop offset="1" stop-color="#9c8d7d"/>
+      </linearGradient>
+      <linearGradient id="${u}linen" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#f7f2ea"/>
+        <stop offset=".6" stop-color="#e2d8ca"/>
+        <stop offset="1" stop-color="#b9ab99"/>
+      </linearGradient>
+      <linearGradient id="${u}porcelain" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#d9d4cc"/>
+        <stop offset=".35" stop-color="#fbf9f5"/>
+        <stop offset="1" stop-color="#b8b2a8"/>
+      </linearGradient>
+      <linearGradient id="${u}haze" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#c77f8f" stop-opacity="0"/>
+        <stop offset="1" stop-color="#e9a58e" stop-opacity=".38"/>
+      </linearGradient>
+      <radialGradient id="${u}vig" cx=".5" cy=".5" r=".75">
+        <stop offset=".55" stop-color="#000" stop-opacity="0"/>
+        <stop offset="1" stop-color="#000" stop-opacity=".6"/>
+      </radialGradient>
+      <radialGradient id="${u}warm" cx=".45" cy=".25" r=".8">
+        <stop offset="0" stop-color="#ffcf9a" stop-opacity=".12"/>
+        <stop offset="1" stop-color="#ffcf9a" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="${u}far" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="1.1"/></filter>
+      <filter id="${u}mid" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation=".45"/></filter>
+      <filter id="${u}shadow" x="-30%" y="-80%" width="160%" height="260%"><feGaussianBlur stdDeviation="9"/></filter>
+      <filter id="${u}bloom" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+      <filter id="${u}grain" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/>
+        <feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .9 0"/>
+      </filter>
     </defs>`;
 
   const sky = (u, rng, x, y, w, h, stars = 40) => {
@@ -94,14 +133,25 @@
 
   const city = (u, rng, x, y, w, h) =>
     sky(u, rng, x, y, w, h) +
-    buildings(rng, { x0: x - 20, x1: x + w, base: y + h, minH: h * 0.18, maxH: h * 0.42, fill: '#2a2343', lit: 0.12 }) +
-    buildings(rng, { x0: x - 30, x1: x + w, base: y + h, minH: h * 0.08, maxH: h * 0.3, fill: '#14111d', lit: 0.28 });
+    `<g filter="url(#${u}far)" opacity=".85">` +
+    buildings(rng, { x0: x - 20, x1: x + w, base: y + h, minH: h * 0.18, maxH: h * 0.42, fill: '#33294c', lit: 0.12 }) +
+    `</g><rect x="${x}" y="${f(y + h * 0.45)}" width="${w}" height="${f(h * 0.55)}" fill="url(#${u}haze)"/>` +
+    `<g filter="url(#${u}mid)">` +
+    buildings(rng, { x0: x - 30, x1: x + w, base: y + h, minH: h * 0.08, maxH: h * 0.3, fill: '#14111d', lit: 0.28 }) +
+    `</g>`;
 
   const pendant = (u, x, len, r = 11) => `
     <line x1="${x}" y1="0" x2="${x}" y2="${len}" stroke="#6d6158" stroke-width="1.2"/>
     <circle cx="${x}" cy="${len + r}" r="${r * 8}" fill="url(#${u}glow)" class="glow"/>
     <path d="M${x - r * 1.4} ${len + r} a${r * 1.4} ${r} 0 0 1 ${r * 2.8} 0z" fill="#c9a77a"/>
     <ellipse cx="${x}" cy="${len + r}" rx="${r * 1.1}" ry="${r * 0.35}" fill="#fff1d6"/>`;
+
+  const shadow = (u, cx, cy, rx, ry, o = 0.55) =>
+    `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="#000" opacity="${o}" filter="url(#${u}shadow)"/>`;
+
+  // Ikkunalasin heijastus: huoneen lamput näkyvät himmeästi lasissa
+  const glassReflection = (u, pts) => pts.map(([x, y]) =>
+    `<circle cx="${x}" cy="${y}" r="5" fill="#ffe2b8" opacity=".22" filter="url(#${u}bloom)"/>`).join('');
 
   const plant = (x, y, s = 1) => `
     <g transform="translate(${x} ${y}) scale(${s})">
@@ -116,7 +166,11 @@
     </g>`;
 
   const svg = (u, body, label) =>
-    `<svg class="scene" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${label}">${defs(u)}${body}</svg>`;
+    `<svg class="scene" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${label}">${defs(u)}${body}
+      <rect width="${W}" height="${H}" fill="url(#${u}warm)"/>
+      <rect width="${W}" height="${H}" fill="url(#${u}vig)"/>
+      <rect width="${W}" height="${H}" filter="url(#${u}grain)" opacity=".07" style="mix-blend-mode:overlay"/>
+    </svg>`;
 
   // ---------- Sisänäkymät ----------
   const studioInterior = (u, rng) => {
@@ -137,14 +191,18 @@
       <rect x="${win.x}" y="420" width="${win.w}" height="110" fill="url(#${u}refl)"/>
       ${Array.from({ length: 9 }, (_, i) => `<line x1="0" y1="${430 + i * 20}" x2="${W}" y2="${430 + i * 20}" stroke="#000" stroke-opacity=".18"/>`).join('')}
       <ellipse cx="300" cy="540" rx="260" ry="40" fill="#3a3330" opacity=".8"/>
+      ${shadow(u, 250, 525, 210, 18)}
+      ${shadow(u, 655, 528, 100, 10, 0.45)}
+      ${glassReflection(u, [[470, 150], [700, 380]])}
       <!-- sänky -->
       <rect x="30" y="350" width="34" height="170" rx="4" fill="#3a2e26"/>
       <rect x="60" y="470" width="380" height="50" rx="4" fill="#2c2420"/>
-      <rect x="60" y="440" width="380" height="38" rx="8" fill="#ece5da"/>
-      <rect x="170" y="430" width="275" height="50" rx="10" fill="#d8cdbf"/>
+      <rect x="60" y="440" width="380" height="38" rx="8" fill="url(#${u}linen)"/>
+      <rect x="170" y="430" width="275" height="50" rx="10" fill="url(#${u}linen)"/>
+      <rect x="170" y="430" width="275" height="10" rx="5" fill="#fff" opacity=".18"/>
       <path d="M170 452 Q300 444 445 456" stroke="#bfb2a2" stroke-width="2" fill="none"/>
       <rect x="250" y="428" width="70" height="52" fill="#b89a74" opacity=".75"/>
-      <rect x="72" y="408" width="88" height="34" rx="12" fill="#f6f1e9"/>
+      <rect x="72" y="408" width="88" height="34" rx="12" fill="url(#${u}linen)"/>
       <rect x="82" y="396" width="78" height="30" rx="12" fill="#efe8de"/>
       <!-- kirjoituspöytä -->
       <rect x="560" y="448" width="190" height="8" fill="#4a3a2e"/>
@@ -176,10 +234,14 @@
       <path d="M80 600 Q300 470 800 455 M300 600 Q500 500 800 520" stroke="#fff" stroke-opacity=".05" stroke-width="2" fill="none"/>
       <ellipse cx="370" cy="525" rx="250" ry="42" fill="#2e2a2b"/>
       <!-- sohva -->
-      <rect x="180" y="398" width="330" height="56" rx="18" fill="#cbbba8"/>
-      <rect x="170" y="440" width="350" height="52" rx="14" fill="#bfae9a"/>
-      <rect x="160" y="420" width="38" height="78" rx="14" fill="#b3a28e"/>
-      <rect x="492" y="420" width="38" height="78" rx="14" fill="#b3a28e"/>
+      ${shadow(u, 345, 500, 200, 16)}
+      ${shadow(u, 690, 505, 110, 12)}
+      ${glassReflection(u, [[300, 230], [400, 260], [604, 330]])}
+      <rect x="180" y="398" width="330" height="56" rx="18" fill="url(#${u}sofa)"/>
+      <rect x="170" y="440" width="350" height="52" rx="14" fill="url(#${u}sofaSeat)"/>
+      <rect x="180" y="442" width="330" height="6" rx="3" fill="#fff" opacity=".2"/>
+      <rect x="160" y="420" width="38" height="78" rx="14" fill="url(#${u}sofa)"/>
+      <rect x="492" y="420" width="38" height="78" rx="14" fill="url(#${u}sofa)"/>
       <rect x="225" y="414" width="60" height="38" rx="10" fill="#8b6a52"/>
       <rect x="395" y="414" width="60" height="38" rx="10" fill="#6b5a7a"/>
       <!-- sohvapöytä -->
@@ -188,7 +250,7 @@
       <path d="M330 520 l4 -18 h6 l4 18z" fill="#e9e1d4" opacity=".8"/>
       <!-- vapaasti seisova kylpyamme -->
       <ellipse cx="690" cy="500" rx="100" ry="14" fill="#000" opacity=".35"/>
-      <path d="M590 445 Q590 495 640 498 H740 Q790 495 790 445z" fill="#f3efe9"/>
+      <path d="M590 445 Q590 495 640 498 H740 Q790 495 790 445z" fill="url(#${u}porcelain)"/>
       <ellipse cx="690" cy="445" rx="100" ry="12" fill="#e2ddd5"/>
       <ellipse cx="690" cy="446" rx="88" ry="8" fill="#9ed0dc"/>
       <path d="M625 446 h40 M700 444 h50" stroke="#fff" stroke-width="1.5" class="shim"/>
@@ -214,7 +276,7 @@
     for (let i = 0; i < 9; i++) {
       const x = 80 + i * 22 + rng() * 8;
       const h = 14 + rng() * 14;
-      flames += `<path d="M${f(x)} 506 q-7 -${f(h * 0.5)} 0 -${f(h)} q7 ${f(h * 0.5)} 0 ${f(h)}z" fill="${i % 2 ? '#ffb15c' : '#ff8a3c'}" class="flame" ${delay(rng, 1)}/>`;
+      flames += `<path filter="url(#${u}bloom)" opacity=".5" d="M${f(x)} 506 q-9 -${f(h * 0.6)} 0 -${f(h * 1.1)} q9 ${f(h * 0.6)} 0 ${f(h * 1.1)}z" fill="#ffb15c"/><path d="M${f(x)} 506 q-7 -${f(h * 0.5)} 0 -${f(h)} q7 ${f(h * 0.5)} 0 ${f(h)}z" fill="${i % 2 ? '#ffb15c' : '#ff8a3c'}" class="flame" ${delay(rng, 1)}/>`;
     }
     return svg(u, `
       <rect width="${W}" height="${H}" fill="#141217"/>
@@ -239,11 +301,16 @@
       <path d="M560 420 h120 q40 0 40 30 q0 30 -60 30 h-100z" fill="#08070a"/>
       <path d="M560 420 l60 -70 l10 6 l-50 64z" fill="#0c0b0f"/>
       <path d="M565 425 h110" stroke="#fff" stroke-opacity=".25" stroke-width="1.5"/>
+      <path d="M600 470 q40 6 90 -8" stroke="#ffd9a8" stroke-opacity=".35" stroke-width="2" fill="none"/>
       <rect x="566" y="480" width="5" height="40" fill="#08070a"/><rect x="690" y="480" width="5" height="40" fill="#08070a"/>
       <rect x="556" y="440" width="8" height="18" fill="#f0ece6"/>
       <!-- sohva -->
-      <path d="M330 505 q0 -40 40 -40 h220 q40 0 40 40 v40 h-300z" fill="#e7ddd0"/>
-      <rect x="320" y="520" width="320" height="40" rx="14" fill="#d8ccbd"/>
+      ${shadow(u, 480, 565, 190, 14)}
+      ${shadow(u, 640, 515, 100, 10, 0.5)}
+      ${glassReflection(u, [[400, 110], [175, 470]])}
+      <path d="M330 505 q0 -40 40 -40 h220 q40 0 40 40 v40 h-300z" fill="url(#${u}sofa)"/>
+      <rect x="320" y="520" width="320" height="40" rx="14" fill="url(#${u}sofaSeat)"/>
+      <rect x="330" y="522" width="300" height="6" rx="3" fill="#fff" opacity=".2"/>
       <rect x="380" y="488" width="56" height="34" rx="10" fill="#b8865f"/>
       <rect x="520" y="488" width="56" height="34" rx="10" fill="#7a6a96"/>
       <ellipse cx="470" cy="585" rx="120" ry="12" fill="#2d2928"/>
